@@ -1,17 +1,21 @@
-# Etapa base
-FROM python:3.11-slim AS base
+# Usar imagem base leve do Python
+FROM python:3.11-slim
 
-# Establecer el directorio de trabajo
+# Definir diretório de trabalho dentro do contêiner
 WORKDIR /app
 
-# Copiar los archivos de requisitos
+# Copiar o arquivo de dependências primeiro (para cache mais eficiente)
 COPY requirements.txt .
 
-# Instalar las dependencias
-RUN pip install --no-cache-dir -r requirements.txt  
+# Instalar dependências do projeto
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Exponer el puerto 8000
-EXPOSE 8000 
+# Copiar todo o restante do código
+COPY . .
 
-# Comando por defecto
-CMD ["python", "app.py"]
+# Expor a porta usada pelo FastAPI
+EXPOSE 8000
+
+# Comando para iniciar o servidor FastAPI com Uvicorn
+CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000"]
+
