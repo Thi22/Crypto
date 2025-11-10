@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto Monitor Realtime</title>
+  <script src="https://cdn.jsdelivr.net/npm/lightweight-charts@4.0.1/dist/lightweight-charts.standalone.production.js"></script>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0d1117;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    header {
+      padding: 10px;
+      background: #161b22;
+      border-bottom: 1px solid #30363d;
+    }
+    select, button {
+      background: #21262d;
+      color: white;
+      border: 1px solid #30363d;
+      padding: 6px 10px;
+      border-radius: 6px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    #chart {
+      width: 100%;
+      height: 500px;
+    }
+    #info {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>📈 Crypto Monitor (Tempo Real)</h2>
+    <select id="symbol">
+      <option value="BTCUSDT">BTC / USDT</option>
+      <option value="ETHUSDT">ETH / USDT</option>
+      <option value="BNBUSDT">BNB / USDT</option>
+      <option value="SOLUSDT">SOL / USDT</option>
+    </select>
+    <button data-interval="1h">1H</button>
+    <button data-interval="1d">1D</button>
+    <span id="clock"></span>
+  </header>
+
+  <div id="chart"></div>
+  <div id="info"></div>
+
+  <script src="/static/main.js"></script>
+</body>
+</html>
